@@ -3,7 +3,7 @@
   mkdir -p ~/.vim/autoload ~/.vim/bundle && \
   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-2. Load all necassary plugins:
+2. Load all necassary plugins into the ~/.vim/bundle:
 
   - [closetag.vim](https://github.com/docunext/closetag.vim)
   - [delimitMate](https://github.com/Raimondi/delimitMate)
@@ -17,3 +17,6 @@
   - [vim-javascript](https://github.com/pangloss/vim-javascript)
   - [vim-javascrypt-syntax](https://github.com/jelera/vim-javascript-syntax)
   - [vimroom](https://github.com/mikewest/vimroom)
+
+3. All the pretty colours you want to load into the ~/.vim/colors:
+  - [Vim colorschemes](https://github.com/flazz/vim-colorschemes)
