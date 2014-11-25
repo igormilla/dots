@@ -71,9 +71,9 @@
 
 
 [core]
-	exludesfile = /root/.gitignore_globale
   autocrlf = false
   editor = vim
+	excludesfile = .gitignore_global
 
 [credential]
 	helper = cache --timeout=3600
