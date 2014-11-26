@@ -6,28 +6,29 @@ set title
 
 set t_Co=256
 syntax enable 
+" set background=dark
 colorscheme bubblegum 
 
 " highlight inc search
 set hlsearch
 set incsearch
 
-" this clears the 'last search pattern' by hitting return
+"This clears the 'last search pattern' by hitting return
 nnoremap <CR> :noh<CR><CR>
 
 " open new slip panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
 
-" nicely shows indentions
 filetype plugin indent on
 set ts=2 sw=2 et
 let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  guibg=#3A3A3A   ctermbg=237
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 hi IndentGuidesEven ctermbg=darkgrey
+" let g:indent_guides_guide_size = 1
 
-" treats ejs files as html, 
 au BufNewFile,BufRead *.ejs set filetype=html
 
 " Syntastic with jshint
@@ -76,3 +77,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <S-tab> :bn<CR>
 map <C-t> :tabnew<CR>
+
+" spellchek for txt files
+au BufRead *.txt setlocal spell
+
+" make Gdiff to open shit vertically
+set diffopt+=vertical
