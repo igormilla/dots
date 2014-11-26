@@ -7,6 +7,7 @@
 
   - [closetag.vim](https://github.com/docunext/closetag.vim)
   - [delimitMate](https://github.com/Raimondi/delimitMate)
+  - [fugitive](https://github.com/tpope/vim-fugitive)
   - [nerdtree](https://github.com/scrooloose/nerdtree)
   - [supertab](https://github.com/ervandew/supertab)
   - [syntastic](https://github.com/scrooloose/syntastic)
