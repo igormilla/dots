@@ -6,8 +6,10 @@ set title
 
 set t_Co=256
 syntax enable 
-" set background=dark
 colorscheme bubblegum 
+
+" fix tmux issue with background
+:set t_ut=
 
 " highlight inc search
 set hlsearch
