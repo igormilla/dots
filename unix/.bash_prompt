@@ -9,7 +9,7 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM='xterm-256color';
 fi;
 
-__git_ps1_show_upstream ()
+git_upstream ()
 {
 	local key value
 	local svn_remote svn_url_pattern count n
@@ -104,11 +104,11 @@ __git_ps1_show_upstream ()
 		"0	0") # equal to upstream
 			p="" ;;
 		"0	"*) # ahead of upstream
-			p=" +${count#0	}" ;;
+			p=" ${green}↑${count#0	}" ;;
 		*"	0") # behind upstream
-			p=" -${count%	0}" ;;
+			p=" ${red}↓${count%	0}" ;;
 		*)	    # diverged from upstream
-			p=" +${count#*	} -${count%	*}" ;;
+			p=" ${green}↑${count#*	} ${red}↓${count%	*}" ;;
 		esac
 		if [[ -n "$count" && -n "$name" ]]; then
 			__git_ps1_upstream_name=$(git rev-parse \
@@ -160,7 +160,7 @@ prompt_git() {
 			fi;
 
 			local p=""
-			__git_ps1_show_upstream
+			git_upstream
 		fi;
 
 		# Get the short symbolic ref.
