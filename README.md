@@ -9,3 +9,7 @@ Upstream status doesn't refresh the repository state. If you want more 'live' st
 ### Git
 
 Don't forget to update .gitcongit.user file with your name/email. 
+
+### Font
+
+Source Code Pro ([source](https://github.com/adobe-fonts/source-code-pro), [dist](https://www.fontsquirrel.com/fonts/source-code-pro))
