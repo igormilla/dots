@@ -75,7 +75,7 @@
 [core]
   autocrlf = false
   editor = vim
-	excludesfile = /Users/telescope/.gitignore_global
+	excludesfile = .gitignore_global
 
 [credential]
 	helper = cache --timeout=3600
@@ -120,14 +120,3 @@
   algorithm = patience
 [include]
   path = .gitconfig.user
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[user]
-	name = igor milla
-	email = igor.milla@telescope.tv
-[commit]
-	template = /Users/telescope/.stCommitMsg
