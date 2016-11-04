@@ -1,5 +1,6 @@
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
+export PATH="/usr/local/bin:$HOME/bin:$PATH";
+
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -46,3 +47,13 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+# Aliases
+alias tcopy='tmux save-buffer - | pbcopy'
+#alias caws='ssh -i "$HOME/.ssh/dev-2014-10-20.pem" ec2-user@172.16.17.208'
+
+
+
+tes t-e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+export EDITOR='vim'
