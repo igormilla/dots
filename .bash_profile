@@ -57,3 +57,6 @@ alias tcopy='tmux save-buffer - | pbcopy'
 tes t-e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 export EDITOR='vim'
+
+# jenv fix
+eval "$(jenv init -)"
