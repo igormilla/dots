@@ -52,7 +52,7 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 export EVENT_NOKQUEUE=1
 alias tcopy='tmux save-buffer - | pbcopy'
 
-tes t-e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 export EDITOR='vim'
 
