@@ -49,10 +49,8 @@ complete -W "NSGlobalDomain" defaults;
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
 # Aliases
+export EVENT_NOKQUEUE=1
 alias tcopy='tmux save-buffer - | pbcopy'
-#alias caws='ssh -i "$HOME/.ssh/dev-2014-10-20.pem" ec2-user@172.16.17.208'
-
-
 
 tes t-e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
