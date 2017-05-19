@@ -28,6 +28,7 @@
   
   tags = tag -l
   b = branch -vv
+  bv = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
   branches = branch -a
   remotes = remote -v
 
@@ -75,7 +76,7 @@
 [core]
   autocrlf = false
   editor = vim
-	excludesfile = .gitignore_global
+	excludesfile = /Users/telescope/.gitignore_global
 
 [credential]
 	helper = cache --timeout=3600
@@ -112,11 +113,23 @@
   log = true
   summary = true
   verbosity = 1
-  tool = mvimdiff
+	tool = meld
 [diff]
   # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
   # instead of a/b/c/d as prefixes for patches
   mnemonicprefix = true
   algorithm = patience
+	tool = meld
 [include]
   path = .gitconfig.user
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = igor milla
+	email = igor.milla@telescope.tv
+[commit]
+	template = /Users/telescope/.stCommitMsg
