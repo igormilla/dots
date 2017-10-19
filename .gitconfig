@@ -15,8 +15,14 @@
   # Pull in remote changes for the current repository and all its submodules
   p = !"git pull; git submodule foreach git pull origin master"
 
-  # Clone a repository including all submodules
-  c = clone --recursive
+  # Checkout
+  c = checkout
+
+  # Checkout previous branch
+  c- = checkout -
+
+  # Merge previous branch
+  m- = merge -
 
   # Commit all changes
   ca = !git add -A && git commit -av
@@ -27,8 +33,8 @@
   # Show verbose output about tags, branches or remotes
   
   tags = tag -l
-  b = branch -vv
-  bv = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+  b = !git for-each-ref --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:green)%(committerdate:relative)'|column -ts'|'
+  bv = !git for-each-ref --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:green)%(committerdate:relative)|%(color:reset)%(subject)%(color:reset)'|column -ts'|'
   branches = branch -a
   remotes = remote -v
 
@@ -71,7 +77,6 @@
       git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
     fi \
   }; f"
-
 
 [core]
   autocrlf = false
@@ -122,14 +127,6 @@
 	tool = meld
 [include]
   path = .gitconfig.user
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [user]
 	name = igor milla
 	email = igor.milla@telescope.tv
-[commit]
-	template = /Users/telescope/.stCommitMsg
