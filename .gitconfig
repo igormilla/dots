@@ -2,6 +2,8 @@
 
   # View abbreviated SHA, description, and history graph of the latest 20 commits
   l = log --pretty=oneline -n 20 --graph --abbrev-commit
+  ll = log --pretty=format:'%Cblue(%an)%Creset %Cred %s %Creset%w(0,0,16)%b' -n 20 --graph --abbrev-commit
+
 
   # View the current working tree status using the short format
   s = status -s
@@ -127,6 +129,3 @@
 	tool = meld
 [include]
   path = .gitconfig.user
-[user]
-	name = igor milla
-	email = igor.milla@telescope.tv
