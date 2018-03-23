@@ -81,7 +81,6 @@
       git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
     fi \
   }; f"
-	fame = python --version -m gitfame
 
 [core]
   autocrlf = false
