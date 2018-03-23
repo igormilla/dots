@@ -1,7 +1,6 @@
 # Add `~/bin` to the `$PATH`
 export PATH="/usr/local/bin:$HOME/bin:$PATH";
 
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -50,11 +49,7 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # Aliases
 export EVENT_NOKQUEUE=1
-alias tcopy='tmux save-buffer - | pbcopy'
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 export EDITOR='vim'
-
-# jenv fix
-eval "$(jenv init -)"

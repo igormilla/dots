@@ -2,7 +2,7 @@
 
   # View abbreviated SHA, description, and history graph of the latest 20 commits
   l = log --pretty=oneline -n 20 --graph --abbrev-commit
-  ll = log --pretty=format:'%Cblue(%an)%Creset %Cred %s %Creset%w(0,0,16)%b' -n 20 --graph --abbrev-commit
+  ll = log --pretty=format:'%Cblue(%an)%Creset %Cred %s %Creset%w(0,0,16)%b' -n 20 --graph --abbrev-commit 
 
 
   # View the current working tree status using the short format
@@ -32,8 +32,10 @@
   # Switch to a branch, creating it if necessary
   go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
-  # Show verbose output about tags, branches or remotes
+  # Delete tag localy and remotely
+  deltag = !sh -c 'git tag --delete $1 && git push origin :refs/tags/$1' -
   
+  # Show verbose output about tags, branches or remotes
   tags = tag -l
   b = !git for-each-ref --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:green)%(committerdate:relative)'|column -ts'|'
   bv = !git for-each-ref --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:green)%(committerdate:relative)|%(color:reset)%(subject)%(color:reset)'|column -ts'|'
@@ -79,6 +81,7 @@
       git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
     fi \
   }; f"
+	fame = python --version -m gitfame
 
 [core]
   autocrlf = false
