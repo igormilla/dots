@@ -81,20 +81,19 @@
       git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
     fi \
   }; f"
+	fame = python --version -m gitfame
 
 [core]
   autocrlf = false
   editor = vim
 	excludesfile = /Users/telescope/.gitignore_global
-
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [credential]
 	helper = cache --timeout=3600
-
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
-
 [color]
-  ui = true
+	ui = true
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -108,12 +107,10 @@
   added = yellow
   changed = green
   untracked = cyan
-
 [advice]
   statusHints = false
 [help]
   autocorrect = 1
-
 [mergetool]
   prompt = false
 [mergetool "mvimdiff"]
