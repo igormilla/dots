@@ -4,7 +4,6 @@
   l = log --pretty=oneline -n 20 --graph --abbrev-commit
   ll = log --pretty=format:'%Cblue(%an)%Creset %Cred %s %Creset%w(0,0,16)%b' -n 20 --graph --abbrev-commit 
 
-
   # View the current working tree status using the short format
   s = status -s
 
@@ -81,19 +80,43 @@
       git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
     fi \
   }; f"
+
 	fame = python --version -m gitfame
+
+  burn = !"git clean -d -f -x; git reset --hard"
+
+  # submodules related commands
+  sdiff = "!git diff && git submodule foreach 'git diff'"
+  spush = "push --recurse-submodules=on-demand"
+  supdate = "submodule update --remote --m"
+  sburn = "submodule foreach 'git clean -d -f -x && git reset --hard'"
+  # submodules status with pretty colors
+  sf = !python ~/scripts/git-submodules-status.py
+  ss = !python ~/scripts/git-submodules-status.py --status --short
+  sss = !python ~/scripts/git-submodules-status.py --short
 
 [core]
   autocrlf = false
   editor = vim
 	excludesfile = /Users/telescope/.gitignore_global
 	pager = diff-so-fancy | less --tabs=4 -RFX
+
 [credential]
 	helper = cache --timeout=3600
+
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+
 [color]
-	ui = true
+	ui = always
+	branch = always
+	diff = always
+	interactive = always
+	status = always
+	grep = always
+	pager = true
+	decorate = always
+	showbranch = always
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -126,5 +149,8 @@
   mnemonicprefix = true
   algorithm = patience
 	tool = meld
+	submodule = log
+[status]
+	submoduleSummary = true
 [include]
   path = .gitconfig.user
