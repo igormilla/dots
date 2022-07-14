@@ -178,12 +178,23 @@ prompt_git() {
 	fi;
 }
 
+node_version() {
+  version="$(node --version | cut -c2-)"
+  echo -e "${gray} ⬢ ${version}"
+}
+
+python_version() {
+  version="$(python --version | awk '{print $2}')"
+  echo -e " 🐍 ${version}"
+}
+
 if tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
 	bold=$(tput bold);
 	reset=$(tput sgr0);
 	# Solarized colors, taken from http://git.io/solarized-colors.
 	black=$(tput setaf 0);
+	gray=$(tput setaf 240);
 	blue=$(tput setaf 33);
 	cyan=$(tput setaf 37);
 	green=$(tput setaf 64);
@@ -197,6 +208,7 @@ else
 	bold='';
 	reset="\e[0m";
 	black="\e[1;30m";
+	gray="\e[1;90m";
 	blue="\e[1;34m";
 	cyan="\e[1;36m";
 	green="\e[1;32m";
@@ -231,6 +243,8 @@ PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\w"; # working directory
 PS1+="\$(prompt_git \"${white} on ${violet}\")"; # Git repository details
+PS1+="\$(node_version)"; # node
+PS1+="\$(python_version)"; # python
 PS1+="\n";
 PS1+="\[${white}\]\$ \[${reset}\]"; # `$` (and reset color)
 export PS1;
